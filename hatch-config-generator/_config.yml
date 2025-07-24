@@ -1,0 +1,34 @@
+# GitHub Pages configuration for Hatch Configuration Generator
+title: "Hatch Python Project Configuration Generator"
+description: "Create professional pyproject.toml files for Python projects using Hatch"
+url: "https://superpauly.github.io"
+baseurl: "/hatch-config-generator"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - .github/
+
+# Include files that start with underscores
+include:
+  - _config.yml
+
+# SEO and social
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Social links
+github_username: SuperPauly
+twitter_username: # Add if you have one
+
+# Google Analytics (optional)
+# google_analytics: UA-XXXXXXXX-X
+

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatch Python Project Configuration Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Hatch Python Project Configuration Generator</h1>
+            <p>Create a professional <code>pyproject.toml</code> file for your Python project using Hatch</p>
+            <p class="subtitle">✨ Static site hosted on GitHub Pages - No server required!</p>
+        </header>
+
+        <div class="main-content">
+            <div class="form-container">
+                <form id="config-form" class="config-form">
+                    <!-- Project Information -->
+                    <section class="form-section">
+                        <h2>📦 Project Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="name">Project Name *</label>
+                            <input type="text" id="name" name="name" value="my-project" required>
+                            <small>The name of your Python package (lowercase, hyphens allowed)</small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="version">Version *</label>
+                                <input type="text" id="version" name="version" value="0.1.0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="license">License</label>
+                                <select id="license" name="license">
+                                    <option value="MIT">MIT</option>
+                                    <option value="Apache-2.0">Apache-2.0</option>
+                                    <option value="BSD-3-Clause">BSD-3-Clause</option>
+                                    <option value="GPL-3.0">GPL-3.0</option>
+                                    <option value="LGPL-3.0">LGPL-3.0</option>
+                                    <option value="MPL-2.0">MPL-2.0</option>
+                                    <option value="ISC">ISC</option>
+                                    <option value="Unlicense">Unlicense</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description *</label>
+                            <textarea id="description" name="description" rows="2" required>A Python project built with Hatch</textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="readme">README File</label>
+                                <input type="text" id="readme" name="readme" value="README.md">
+                            </div>
+                            <div class="form-group">
+                                <label for="requires_python">Python Version</label>
+                                <input type="text" id="requires_python" name="requires_python" value=">=3.8">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Authors and Maintainers -->
+                    <section class="form-section">
+                        <h2>👥 Authors & Maintainers</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="author_name">Author Name</label>
+                                <input type="text" id="author_name" name="author_name" value="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="author_email">Author Email</label>
+                                <input type="email" id="author_email" name="author_email" value="your.email@example.com">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- URLs -->
+                    <section class="form-section">
+                        <h2>🔗 Project URLs</h2>
+                        
+                        <div class="form-group">
+                            <label for="homepage">Homepage</label>
+                            <input type="url" id="homepage" name="homepage" value="https://github.com/username/my-project">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="repository">Repository</label>
+                                <input type="url" id="repository" name="repository" value="https://github.com/username/my-project">
+                            </div>
+                            <div class="form-group">
+                                <label for="issues">Issues</label>
+                                <input type="url" id="issues" name="issues" value="https://github.com/username/my-project/issues">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Dependencies -->
+                    <section class="form-section">
+                        <h2>📚 Dependencies</h2>
+                        
+                        <div class="form-group">
+                            <label for="dependencies">Runtime Dependencies</label>
+                            <textarea id="dependencies" name="dependencies" rows="4" placeholder="requests>=2.25.0&#10;click>=8.0.0&#10;pydantic>=1.8.0"></textarea>
+                            <small>One dependency per line (e.g., "requests>=2.25.0")</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dev_dependencies">Development Dependencies</label>
+                            <textarea id="dev_dependencies" name="dev_dependencies" rows="4">pytest>=7.0.0
+black>=22.0.0
+isort>=5.0.0
+flake8>=4.0.0</textarea>
+                            <small>Development and testing dependencies</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="docs_dependencies">Documentation Dependencies</label>
+                            <textarea id="docs_dependencies" name="docs_dependencies" rows="3">mkdocs>=1.4.0
+mkdocs-material>=8.0.0</textarea>
+                            <small>Documentation building dependencies</small>
+                        </div>
+                    </section>
+
+                    <!-- Hatch Configuration -->
+                    <section class="form-section">
+                        <h2>⚙️ Hatch Configuration</h2>
+                        
+                        <div class="form-group">
+                            <label for="version_path">Version File Path</label>
+                            <input type="text" id="version_path" name="version_path" value="src/my_project/__init__.py">
+                            <small>Path to file containing __version__ variable</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="packages">Package Directories</label>
+                            <input type="text" id="packages" name="packages" value="src/my_project">
+                            <small>Comma-separated list of package directories</small>
+                        </div>
+                    </section>
+
+                    <!-- Project Classifiers -->
+                    <section class="form-section">
+                        <h2>🏷️ Project Classifiers</h2>
+                        
+                        <div class="form-group">
+                            <label for="keywords">Keywords</label>
+                            <input type="text" id="keywords" name="keywords" value="" placeholder="python, cli, tool, utility">
+                            <small>Comma-separated keywords for your project</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Development Status</label>
+                            <select id="dev_status" name="dev_status">
+                                <option value="Development Status :: 1 - Planning">1 - Planning</option>
+                                <option value="Development Status :: 2 - Pre-Alpha">2 - Pre-Alpha</option>
+                                <option value="Development Status :: 3 - Alpha" selected>3 - Alpha</option>
+                                <option value="Development Status :: 4 - Beta">4 - Beta</option>
+                                <option value="Development Status :: 5 - Production/Stable">5 - Production/Stable</option>
+                                <option value="Development Status :: 6 - Mature">6 - Mature</option>
+                                <option value="Development Status :: 7 - Inactive">7 - Inactive</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Intended Audience</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="audience" value="Intended Audience :: Developers" checked>
+                                    Developers
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="audience" value="Intended Audience :: End Users/Desktop">
+                                    End Users/Desktop
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="audience" value="Intended Audience :: Science/Research">
+                                    Science/Research
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="audience" value="Intended Audience :: System Administrators">
+                                    System Administrators
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Python Versions</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="python_versions" value="Programming Language :: Python :: 3.8" checked>
+                                    Python 3.8
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="python_versions" value="Programming Language :: Python :: 3.9" checked>
+                                    Python 3.9
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="python_versions" value="Programming Language :: Python :: 3.10" checked>
+                                    Python 3.10
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="python_versions" value="Programming Language :: Python :: 3.11" checked>
+                                    Python 3.11
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="python_versions" value="Programming Language :: Python :: 3.12" checked>
+                                    Python 3.12
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Entry Points -->
+                    <section class="form-section">
+                        <h2>🎯 Entry Points & Scripts</h2>
+                        
+                        <div class="form-group">
+                            <label for="console_scripts">Console Scripts</label>
+                            <textarea id="console_scripts" name="console_scripts" rows="3" placeholder="my-cli = mypackage.cli:main&#10;my-tool = mypackage.tools:run"></textarea>
+                            <small>Console scripts (format: "script-name = module.path:function")</small>
+                        </div>
+                    </section>
+                </form>
+            </div>
+
+            <!-- Generated TOML Display -->
+            <div class="toml-container">
+                <div class="toml-header">
+                    <h2>📄 Generated pyproject.toml</h2>
+                    <div class="toml-actions">
+                        <button id="copy-btn" class="btn btn-secondary" title="Copy to clipboard">
+                            📋 Copy
+                        </button>
+                        <button id="download-btn" class="btn btn-primary" title="Download file">
+                            📥 Download
+                        </button>
+                    </div>
+                </div>
+                <div class="toml-preview">
+                    <pre id="toml-content"><code># Generated pyproject.toml will appear here as you fill out the form above</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Built with ❤️ for the Python community • Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+        <p>Powered by <a href="https://hatch.pypa.io/" target="_blank">Hatch</a> • <a href="https://github.com/SuperPauly/hatch-config-generator" target="_blank">View Source</a></p>
+    </footer>
+
+    <script src="js/toml-generator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
